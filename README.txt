@@ -20,7 +20,7 @@ Project Instruction
 
 3	Test Framework setup
    3.1	Install required NuGet packages in Visual Studio
-     •  Create a new testing solution/project (NUnit project) and save in the git repository folder
+     •  Create a new testing project (ie PurgoMalum_API) and save in the git repository folder
      •  Install below packages through Tools>NuGet Package Manager>Manage NuGet Packages for the project
 	NUnit
 	NUnit.ConsoleRunner
