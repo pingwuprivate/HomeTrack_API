@@ -15,7 +15,8 @@ unwanted contents through  it's Web API
 	   Added bad word is more than 10 word
 	6  It only test JSON Method 
 Background:
-   Given A user setup the web server
+  
+   Given A user is given submission page 
 
 Scenario Outline: Filter out bad words from profanity lists_Default
     

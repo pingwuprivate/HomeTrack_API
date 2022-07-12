@@ -113,3 +113,4 @@ C:\Users\Ping\source\repos\HomeTrack_API\HomeTrack_API\obj\Debug\netcoreapp3.1\H
 C:\Users\Ping\source\repos\HomeTrack_API\HomeTrack_API\obj\Debug\netcoreapp3.1\HomeTrack_API.dll
 C:\Users\Ping\source\repos\HomeTrack_API\HomeTrack_API\obj\Debug\netcoreapp3.1\HomeTrack_API.pdb
 C:\Users\Ping\source\repos\HomeTrack_API\HomeTrack_API\obj\Debug\netcoreapp3.1\HomeTrack_API.genruntimeconfig.cache
+C:\Users\Ping\source\repos\HomeTrack_API\HomeTrack_API\obj\Debug\netcoreapp3.1\HomeTrack_API.csproj.AssemblyReference.cache

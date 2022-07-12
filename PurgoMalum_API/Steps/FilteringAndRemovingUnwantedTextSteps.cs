@@ -11,14 +11,14 @@ namespace PurgoMalum_API.Steps
         RestRequest request;
         RestResponse response;
         RestClient client;
-
-       
-        [Given(@"A user setup the web server")]
-        public void GivenAUserSetupTheWebServer()
+               
+        [Given(@"A user is given submission page")]
+        public void GivenAUserIsGivenSubmissionPage()
         {
-            //setup web server 
+            //submission page to access web server 
             client = new RestClient("https://www.purgomalum.com/");
         }
+
 
         [Given(@"The User entered text ""(.*)""")]
         public void GivenTheUserEnteredText(string inputText)
