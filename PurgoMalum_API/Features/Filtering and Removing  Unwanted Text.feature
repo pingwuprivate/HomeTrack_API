@@ -38,12 +38,13 @@ Scenario Outline: Filter out bad words from profanity lists_Advanced
 	When  The user Request Web Service using JSON Method
 	Then  The result should be <expectedText>
 	Examples:
-	| inputText                                                                       | expectedText                             |
-	| "without profanity word&add=word"                                               | "without profanity ****"                 |
-	| "without profanity word&add=word&fill_text=aaaa"                                | "without profanity aaaa"                 |
-	| "with unwanted word boner&fill_text=[replaced]"                                 | "with unwanted word [replaced]"          |
-	| "with chink unwanted word&fill_text=_____"                                      | "with _____ unwanted word"               |
-	| "COCK with unwanted word&fill_text=hhhh"                                        | "hhhh with unwanted word"                |
+	| inputText                                        | expectedText                    |
+	| "without profanity word&add=word"                | "without profanity ****"        |
+	| "without profanity word&add=word&fill_text=aaaa" | "without profanity aaaa"        |
+	| "with unwanted word boner&fill_text=[replaced]"  | "with unwanted word [replaced]" |
+	| "COCK with unwanted word&fill_text=hhhh"         | "hhhh with unwanted word"       |
+	| "with chink unwanted word&fill_char=-"           | "with ----- unwanted word"      |
+	| "with dic unwanted word&fill_char=~"             | "with ~~~ unwanted word"        |
 	| "this is Shit and that is ass&fill_text=____"                                   | "this is ____ and that is ____"          |
 	| "aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,vv" | "** ** ** ** *** *** *** *** *** jjj **" |
 
