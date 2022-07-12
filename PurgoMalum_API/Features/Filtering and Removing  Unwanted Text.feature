@@ -40,9 +40,10 @@ Scenario Outline: Filter out bad words from profanity lists_Advanced
 	Examples:
 	| inputText                                                                       | expectedText                             |
 	| "without profanity word&add=word"                                               | "without profanity ****"                 |
+	| " This is test Input"&add=Input"                                                | "This is test *****"                     |
 	| "without profanity word&add=word&fill_text=aaaa"                                | "without profanity aaaa"                 |
 	| "with unwanted word boner&fill_text=[replaced]"                                 | "with unwanted word [replaced]"          |
-	| "COCK with unwanted word&fill_text=hhhh"                                        | "hhhh with unwanted word"                |
+	| "COCK with unwanted word&fill_text=20charactercharacter"                        | "20charactercharacter with unwanted word"|
 	| "with chink unwanted word&fill_char=-"                                          | "with ----- unwanted word"               |
 	| "with dic unwanted word&fill_char=~"                                            | "with ~~~ unwanted word"                 | 
 	| "with dic unwanted word&fill_char=\|"                                           | "with \|\|\| unwanted word"              |
@@ -57,9 +58,10 @@ Scenario Outline: Filter out bad words from profanity lists_Error Handling
 	Examples: 
 	| inputText                                                                           | expectedText                                            |
 	| "      "                                                                            | "No Input"                                              |
-	| "this is some test input&fill_text=this is long replacement text"                   | "User Replacement Text Exceeds Limit of 20 Characters." |
+	| "this is some test input&fill_text=long replacement text"                           | "User Replacement Text Exceeds Limit of 20 Characters." |
 	| "aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,jjj,vv" | "User Black List Exceeds Limit of 10 Words."            |
-	
+	| "this is some test input.&add=this is some test input."                             | "Invalid Characters in User Black List"                 |
+
 	
 Scenario Outline: Filter out bad words from profanity lists_Status check
     Given The User entered text check if containing profanity words <inputText>

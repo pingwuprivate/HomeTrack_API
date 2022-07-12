@@ -43,7 +43,7 @@ unwanted contents through  it's Web API
 	   part of word or words
 	   at front , middle, and end
 	 2 Add new word or words as profanity text and can be filtered out and displayed as * by default
-	 3 Filtered profannity text replace by the specified word or symbols
+	 3 Replace profanity text by the specified word or symbols
 	 4 Add and replace the profanity text in the same time 
 	 5 Error Handling scenarios
 	   Empty string
@@ -141,9 +141,10 @@ this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Filter out bad words from profanity lists_Advanced")]
         [NUnit.Framework.TestCaseAttribute("\"without profanity word&add=word\"", "\"without profanity ****\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\" This is test Input\"&add=Input\"", "\"This is test *****\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"without profanity word&add=word&fill_text=aaaa\"", "\"without profanity aaaa\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"with unwanted word boner&fill_text=[replaced]\"", "\"with unwanted word [replaced]\"", null)]
-        [NUnit.Framework.TestCaseAttribute("\"COCK with unwanted word&fill_text=hhhh\"", "\"hhhh with unwanted word\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"COCK with unwanted word&fill_text=20charactercharacter\"", "\"20charactercharacter with unwanted word\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"with chink unwanted word&fill_char=-\"", "\"with ----- unwanted word\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"with dic unwanted word&fill_char=~\"", "\"with ~~~ unwanted word\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"with dic unwanted word&fill_char=|\"", "\"with ||| unwanted word\"", null)]
@@ -185,9 +186,10 @@ this.FeatureBackgroundAsync();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Filter out bad words from profanity lists_Error Handling")]
         [NUnit.Framework.TestCaseAttribute("\"      \"", "\"No Input\"", null)]
-        [NUnit.Framework.TestCaseAttribute("\"this is some test input&fill_text=this is long replacement text\"", "\"User Replacement Text Exceeds Limit of 20 Characters.\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"this is some test input&fill_text=long replacement text\"", "\"User Replacement Text Exceeds Limit of 20 Characters.\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,jjj,v" +
             "v\"", "\"User Black List Exceeds Limit of 10 Words.\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"this is some test input.&add=this is some test input.\"", "\"Invalid Characters in User Black List\"", null)]
         public async System.Threading.Tasks.Task FilterOutBadWordsFromProfanityLists_ErrorHandling(string inputText, string expectedText, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -195,7 +197,7 @@ this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("inputText", inputText);
             argumentsOfScenario.Add("expectedText", expectedText);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filter out bad words from profanity lists_Error Handling", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 53
+#line 54
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -208,13 +210,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 17
 this.FeatureBackgroundAsync();
 #line hidden
-#line 54
+#line 55
  await testRunner.GivenAsync(string.Format("The User entered text {0}", inputText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 55
+#line 56
  await testRunner.WhenAsync("The user Request Web Service using JSON Method", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 56
+#line 57
  await testRunner.ThenAsync(string.Format("The error messages should be {0}", expectedText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -235,7 +237,7 @@ this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("inputText", inputText);
             argumentsOfScenario.Add("expectedStatus", expectedStatus);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filter out bad words from profanity lists_Status check", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 64
+#line 66
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -248,13 +250,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 17
 this.FeatureBackgroundAsync();
 #line hidden
-#line 65
+#line 67
     await testRunner.GivenAsync(string.Format("The User entered text check if containing profanity words {0}", inputText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 66
+#line 68
  await testRunner.WhenAsync("The user Request Web Service for status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 67
+#line 69
  await testRunner.ThenAsync(string.Format("The expected status is {0}", expectedStatus), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
