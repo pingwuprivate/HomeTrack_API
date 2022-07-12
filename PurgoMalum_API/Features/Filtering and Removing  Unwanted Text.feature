@@ -56,13 +56,12 @@ Scenario Outline: Filter out bad words from profanity lists_Error Handling
 	When  The user Request Web Service using JSON Method
 	Then  The error messages should be <expectedText>
 	Examples: 
-	| inputText                                                                           | expectedText                                            |
-	| "      "                                                                            | "No Input"                                              |
-	| "this is some test input&fill_text=long replacement text"                           | "User Replacement Text Exceeds Limit of 20 Characters." |
-	| "aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,jjj,vv" | "User Black List Exceeds Limit of 10 Words."            |
-	| "this is some test input.&add=this is some test input."                             | "Invalid Characters in User Black List"                 |
-
-	
+	| inputText                                                                                                                                                                                                                                                                                            | expectedText                                                       |
+	| "      "                                                                                                                                                                                                                                                                                             | "No Input"                                                         |
+	| "this is some test input&fill_text=long replacement text"                                                                                                                                                                                                                                            | "User Replacement Text Exceeds Limit of 20 Characters."            |
+	| "aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,jjj,vv"                                                                                                                                                                                                                  | "User Black List Exceeds Limit of 10 Words."                       |
+	| "this is some test input.&add=this is some test input."                                                                                                                                                                                                                                              | "Invalid Characters in User Black List"                            |
+	| "The Olympic star has told the BBC he was given the name Mohamed Farah by those who flew him over from Djibouti. His real name is Hussein Abdi Kahin. He was flown over from the East African country aged nine by a woman he had never met, and then made to look after another family's children." | "User Black List Exceeds Limit of 200 maximum characters in lengh."|	
 Scenario Outline: Filter out bad words from profanity lists_Status check
     Given The User entered text check if containing profanity words <inputText>
 	When  The user Request Web Service for status

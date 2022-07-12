@@ -190,6 +190,7 @@ this.FeatureBackgroundAsync();
         [NUnit.Framework.TestCaseAttribute("\"aa bb cc dd eee fff ggg hhh iii jjj vv&add=aa,bb,cc,dd,eee,fff,ggg,hhh,iii,jjj,v" +
             "v\"", "\"User Black List Exceeds Limit of 10 Words.\"", null)]
         [NUnit.Framework.TestCaseAttribute("\"this is some test input.&add=this is some test input.\"", "\"Invalid Characters in User Black List\"", null)]
+        [NUnit.Framework.TestCaseAttribute(@"""The Olympic star has told the BBC he was given the name Mohamed Farah by those who flew him over from Djibouti. His real name is Hussein Abdi Kahin. He was flown over from the East African country aged nine by a woman he had never met, and then made to look after another family's children.""", "\"User Black List Exceeds Limit of 200 maximum characters in lengh.\"", null)]
         public async System.Threading.Tasks.Task FilterOutBadWordsFromProfanityLists_ErrorHandling(string inputText, string expectedText, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -237,7 +238,7 @@ this.FeatureBackgroundAsync();
             argumentsOfScenario.Add("inputText", inputText);
             argumentsOfScenario.Add("expectedStatus", expectedStatus);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filter out bad words from profanity lists_Status check", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 66
+#line 65
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -250,13 +251,13 @@ this.ScenarioInitialize(scenarioInfo);
 #line 17
 this.FeatureBackgroundAsync();
 #line hidden
-#line 67
+#line 66
     await testRunner.GivenAsync(string.Format("The User entered text check if containing profanity words {0}", inputText), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 68
+#line 67
  await testRunner.WhenAsync("The user Request Web Service for status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 69
+#line 68
  await testRunner.ThenAsync(string.Format("The expected status is {0}", expectedStatus), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
